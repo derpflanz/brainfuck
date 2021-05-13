@@ -24,7 +24,7 @@ namespace Brainfuck
                 return _memory[Pointer];
             }
             set {
-
+                _memory[Pointer] = value;
             }
         }
         public Memory()

@@ -8,6 +8,7 @@ namespace Brainfuck
         public IMemory Memory { get; set; }
         public IProcessors Processors { get; set; }
         public IOutput Output { get; set; }
+        public IInput Input {get; set; }
         private byte[] _input;
 
         private delegate void _processStatement();
@@ -46,6 +47,10 @@ namespace Brainfuck
             if (processor is IOutputProcessor) 
             {
                 ((IOutputProcessor)processor).Process(Memory, Output);
+            }
+            if (processor is IInputProcessor) 
+            {
+                ((IInputProcessor)processor).Process(Memory, Input);
             }
         }
     }

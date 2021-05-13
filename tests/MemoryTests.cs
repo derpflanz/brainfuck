@@ -16,6 +16,16 @@ namespace Brainfuck.tests
         }
 
         [Fact]
+        public void Value_SetShouldSetValue() 
+        {
+            var memory = new Memory();
+
+            memory.Value = 0xbf;
+
+            Assert.Equal(0xbf, memory.Value);
+        }
+
+        [Fact]
         public void ShowState_ShouldReturnState() 
         {
             // arrange

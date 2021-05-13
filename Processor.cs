@@ -13,7 +13,18 @@ namespace Brainfuck
     {
         void Process(IMemory memory, IOutput output);
     }
+    public interface IInputProcessor : IProcessor
+    {
+        void Process(IMemory memory, IInput input);
+    }
 
+    public class ReadProcessor : IInputProcessor 
+    {
+        public void Process(IMemory memory, IInput input) 
+        {
+            memory.Value = input.Read();
+        }
+    }
     public class WriteProcessor: IOutputProcessor
     {
         public void Process(IMemory memory, IOutput output)

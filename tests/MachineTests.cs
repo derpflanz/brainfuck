@@ -44,7 +44,7 @@ namespace Brainfuck.tests
             processor.Received().Process(memory);
         }
 
-                [Fact]
+        [Fact]
         public void Run_ShouldCallOutputOnOutputProcessor() 
         {
             // arrange
@@ -66,6 +66,30 @@ namespace Brainfuck.tests
 
             // assert
             processor.Received().Process(memory, output);
+        }
+
+        [Fact]
+        public void Run_ShouldCallInputOnInputProcessor() 
+        {
+            // arrange
+            var processors = Substitute.For<IProcessors>();
+            var processor = Substitute.For<IInputProcessor>();
+            var input = Substitute.For<IInput>();
+            processors.GetProcessor(Arg.Any<Statement>()).Returns(processor);
+
+            var memory = Substitute.For<IMemory>();
+            var machine = new Machine() {
+                Processors = processors,
+                Memory = memory,
+                Input = input
+            };
+            var statement = new Statement(',');
+
+            // act
+            machine.Run(statement);
+
+            // assert
+            processor.Received().Process(memory, input);
         }
     }
 }

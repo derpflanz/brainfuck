@@ -53,6 +53,16 @@ namespace Brainfuck.tests
         }
 
         [Fact]
+        public void Constructor_ShouldGenerateReadStatement()
+        {
+            // arrange + act
+            var statement = new Statement(',');
+
+            // assert
+            Assert.Equal(Statement.Types.Read, statement.Type);
+        }
+
+        [Fact]
         public void ToString_ShouldGiveHumanReadableString()
         {
             // arrange

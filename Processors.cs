@@ -14,7 +14,8 @@ namespace Brainfuck
             { Statement.Types.Decrement, new DecrementProcessor() },
             { Statement.Types.IncreasePointer, new IncreasePointerProcessor() },
             { Statement.Types.DecreasePointer, new DecreasePointerProcessor() },
-            { Statement.Types.Write, new WriteProcessor() }
+            { Statement.Types.Write, new WriteProcessor() },
+            { Statement.Types.Read, new ReadProcessor() }
 
         };
 
